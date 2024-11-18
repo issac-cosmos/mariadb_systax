@@ -36,6 +36,8 @@ show create table author;
 --테이블 컬럼조회 : 중요
 describe author;
 
+select * from author;
+
 --post테이블 신규 생성(id, title, content, author)
 create table post(id int primary key, title varchar(255),content varchar(225), author_id int not null, foreign key(author_id) references author(id));
 
@@ -63,3 +65,7 @@ alter table post modify column contents varchar(3000);
 --테이블 삭제 
 show create table post;
 drop table post;
+
+-- DDL : 테이블 구조 생성/변경/삭제 작업
+-- DML : 테이블안에서 데이터를 삽입/ 변경 / 조회 / 삭제
+-- intset ,update ,select, delete
