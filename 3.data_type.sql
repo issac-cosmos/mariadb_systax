@@ -46,3 +46,32 @@ select * from author where id not in( 1,5 ); --전체 데이터가 1~5까지 밖
 --응용.. 한번이라도 글쓴사람 골라내기
 select *from author where id in(select author_id from post);
 
+--like : 특정문자를 포함하는 데이터를 조회하기 위해 사용하느 키워드
+select * from post where title like '%h'; --h로 끝나는 title검색
+select * from post where title like 'h%'; --h로 시작하는 title검색
+select * from post where title like '%h%';--h가 들어가있는 키워드 검색
+
+--regexp : 정규표현식을 활용한 조회
+select * from post where title regexp '[a-z]'; --하나라도 알파벳이 들어있으면 
+select * from post where title regexp '[가-힣]'; --하나라도 한글이 포함돼 있으면
+
+--날짜변환 cast,convert : 숫자 ->날짜 , 문자->날짜
+select cast(20241119 as date);
+select cast('20241119' as date);
+select convert(20241119 date);
+select convert('20241119' date);
+--문자 ->숫자 변환
+select cast('12' as unsigned);
+
+--날짜 조회 방법
+--like패턴, 부등호 활용, date_pormat
+select * from post where created_time like '2024-11%';  --문자열처럼 조회
+select * from post where created_time >= '2024-01-01' and created_time < '2025-01-01';
+select date_format(created_time,'%Y-%m-%d') from post;
+select date_format(created_time,'%H-%i-%s') from post;
+select * from post where date_format(created_time, '%Y')='2024';
+select * from post where cast(date_format(created_time, '%Y')='2024' as unsigned) = 2024;
+
+--오늘현재시간
+select now();
+
