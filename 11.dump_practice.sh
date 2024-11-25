@@ -22,6 +22,6 @@ create database board;
 sudo apt install git
 
 # git 에서 repository clone
-git clone 레포지토리주소
+git clone https://github.com/issac-cosmos/mariadb_systax
 
 # mariadb 덤프파일 복원
